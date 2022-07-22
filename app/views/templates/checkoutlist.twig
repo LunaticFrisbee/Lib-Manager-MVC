@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Checkout List</title>  
+    </head>
+    <body>
+        <button onclick="window.location='/dashboard';">Back to Dashboard</button>
+        <br><br>
+        <table>
+            <tr>
+                <th style="padding: 4px">Book ISBN</th>
+                <th style="padding: 4px">Book Name</th>
+                <th style="padding: 4px">Hand In</th>
+            </tr>
+            {% if requestData != NULL %}
+                {% for request in requestData %}
+                    <tr>
+                        <td>{{request.isbn}}</td>
+                        <td>{{request.book}}</td>
+                        <td><form action="/dashboard/return" method="POST">
+                            <input type="text" name="{{request.isbn}}" style="display:none">
+                            <input type="submit" value="HandIn" >
+                        </form></td>
+                    </tr>
+        </table>
+    </body>
+</html>

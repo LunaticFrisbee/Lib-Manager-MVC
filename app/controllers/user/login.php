@@ -6,6 +6,7 @@ session_start();
 
 class Login
 {
+    
     public function get()
     {
         echo \View\Loader::make()->render("templates/login.twig");

@@ -4,15 +4,18 @@ namespace Controller;
 
 session_start();
 
-class AdminDashboard{
-
+class Requests
+{
     public function get()
     {
         if($_SESSION["admin"] == 'true'){
-            echo \View\Loader::make()->render("templates/admindashboard.twig");
+            echo \View\Loader::make()->render("templates/requests.twig",array(
+                "bookData" => \Books\Bookutils::view_all_requests(),
+            ));
         }
         else {
             header("Location: /");
         }
     }
+
 }

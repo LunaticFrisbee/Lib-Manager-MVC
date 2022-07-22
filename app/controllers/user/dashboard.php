@@ -17,6 +17,4 @@ class UserDashboard
         header("Location: /");
     }
     }
-
-    // public function ;
 }

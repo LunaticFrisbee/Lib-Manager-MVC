@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Dashboard</title>
+  </head>
+  <body>
+    <button onclick="window.location='/dashboard/checkoutlist';">Your Checkouts</button>
+    <br><br>
+    <table>
+      <tr>
+        <th style="padding: 4px">ID</th>
+        <th style="padding: 4px">Book Name</th>
+        <th style="padding: 4px">Quantity</th>
+        <th style="padding: 4px">Check Out</th>
+      </tr>
+      {% if bookData != NULL %}
+        {% for book in bookData %}
+          <tr>
+            <td>{{book.isbn}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.quantity}}</td>
+            <td><form action="/dashboard/checkoutreq" method="POST">
+              <input type="text" name="bookID" value="{{book.isbn}}" style="display:none">
+              <input type="submit" value="Checkout" id="button">
+            </form></td>
+          </tr>
+    </table>
+    <br />
+    <button class="logout-btn" onclick="window.location='/logout'">
+      Logout
+    </button>
+  </body>
+</html>

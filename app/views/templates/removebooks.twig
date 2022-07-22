@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Remove Books</title>
+  </head>
+  <body>
+    <button onclick="window.location='/admindashboard';">Back</button>
+    <br><br>
+    <table>
+      <tr>
+        <th style="padding: 4px">ISBN</th>
+        <th style="padding: 4px">Book Name</th>
+        <th style="padding: 4px">Copies Available</th>
+        <th style="padding: 4px">Quantity to Remove</th>
+        <th style="padding: 4px"></th>
+        <th></th>
+      </tr>
+      {% if bookData != NULL %}
+        {% for book in bookData %}
+        <tr>
+            <td>{{book.isbn}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.quantity}}</td>
+            <form action="/admindashboard/removebooks" method="POST">
+                <td><input type="number" name="quantity" placeholder="Quantity" /></td>
+                <td><input type="submit" value="Remove" /></td>
+                <td><input type="text" name="bookID" value="{{book.isbn}}" style="display:none;"></td>
+            </form>
+        </tr>
+    </table>
+    <br />
+    <button class="logout-btn" onclick="window.location='/logout';">
+      Logout
+    </button>
+  </body>
+</html>   

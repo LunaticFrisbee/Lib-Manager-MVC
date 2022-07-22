@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Requests</title>
+  </head>
+  <body>
+    <div>
+      <h3>Pending Requests</h3>
+      <table border="2">
+        <tr>
+          <th style="padding: 5px">ISBN</th>
+          <th style="padding: 5px">Book Name</th>
+          <th style="padding: 5px">Requested by</th>
+          <th style="padding: 5px">Approve</th>
+          <th style="padding: 5px">Deny</th>
+        </tr>
+        {% if bookData != NULL %}
+            {% for request in bookData %}
+                <tr>
+                    <td>{{request.isbn}}</td>
+                    <td>{{request.book}}</td>
+                    <td>{{request.enrollmentNo}}</td>
+                    <td>
+                        <form action="/admindashboard/requests/approve" method="POST">
+                            <input type="text" name="bookID" value="{{request.isbn}}" style="display: none;"/>
+                            <input type="text" name="bookTitle" value="{{request.book}}" style="display: none;"/>
+                            <input type="text" name="enrollmentNo" value="{{request.enrollmentNo}}" style="display: none;"/>
+                            <input type="submit" value="Approve" />
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/admindashboard/requests/deny" method="POST">
+                                <input type="text" name="bookID" value="{{request.isbn}}" style="display: none;"/>
+                                <input type="text" name="bookTitle" value="{{request.book}}" style="display: none;"/>
+                                <input type="text" name="enrollmentNo" value="{{request.enrollmentNo}}" style="display: none;"/>
+                                <input type="submit" value="Approve" />
+                        </form>
+                    </td>    
+                </tr>
+      </table>
+    </div>
+  </body>
+</html>
