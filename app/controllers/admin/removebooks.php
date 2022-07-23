@@ -23,9 +23,10 @@ class RemoveBooks
         $bookID = $_POST["bookID"];
         $quantity = $_POST["quantity"];
         $res = \Books\BookUtils::get_book_data($bookID);
-        $updatedQuantity = $res[0]["quantity"] - $quantity;
+        $updatedQuantity = $res["quantity"] - $quantity;
         if($updatedQuantity >= 0){
             \Books\BookUtils::update_book_data($updatedQuantity,$bookID);
+            header("Location: /admindashboard");
         }
         else {
             echo \View\Loader::make()->render("templates/error.twig",array(

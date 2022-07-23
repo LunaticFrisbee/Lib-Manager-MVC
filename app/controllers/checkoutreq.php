@@ -12,7 +12,7 @@ class CheckoutReq
             $bookID = $_POST["bookID"];
             $res = \Books\BookUtils::get_book_data($bookID);
             if($res){
-                \Books\BookUtils::insert_request_data($_SESSION["user"],$res[0]["title"],0,$bookID);
+                \Books\BookUtils::insert_request_data($_SESSION["user"],$res["title"],0,$bookID);
                 header("Location: /dashboard");
             } 
             else{

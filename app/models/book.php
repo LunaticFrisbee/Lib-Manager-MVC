@@ -30,7 +30,7 @@ class BookUtils
 
     public static function get_book_data($isbn){
         $db = \DB::get_instance();
-        $stmt -> prepare("SELECT title, isbn, quantity FROM books WHERE isbn = ?");
+        $stmt = $db -> prepare("SELECT title, isbn, quantity FROM books WHERE isbn = ?");
         $stmt -> execute([$isbn]);
         $res = $stmt -> fetch();
         return $res;

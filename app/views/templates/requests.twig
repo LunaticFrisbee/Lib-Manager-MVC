@@ -38,8 +38,10 @@
                                 <input type="text" name="enrollmentNo" value="{{request.enrollmentNo}}" style="display: none;"/>
                                 <input type="submit" value="Approve" />
                         </form>
-                    </td>    
-                </tr>
+                    </td>
+                  </tr>
+                {% endfor %}
+              {% endif %}
       </table>
     </div>
   </body>

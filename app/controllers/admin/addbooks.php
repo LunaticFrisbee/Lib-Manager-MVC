@@ -18,13 +18,15 @@ class AddBooks
         $isbn = $_POST["isbn"];
         $bookTitle = $_POST["name"];
         $quantity = $_POST["quantity"];
-        $res = \Books\BookUtils::get_all_books($isbn);
-        if($res[0]!= undefined){
-            $updatedQuantity = $quantity + $res[0]["quantity"];
-            \Books\BooksUtils::update_book_data($updatedQuantity,$isbn);
+        $res = \Books\BookUtils::get_book_data($isbn);
+        if($res != NULL){
+            $updatedQuantity = $quantity + $res["quantity"];
+            \Books\BookUtils::update_book_data($updatedQuantity,$isbn);
+            header("Location: /admindashboard");
         }
         else {
             \Books\BookUtils::insert_book_data($bookTitle,$quantity,$isbn,0);
+            header("Location: /admindashboard");
         }
     }
 }

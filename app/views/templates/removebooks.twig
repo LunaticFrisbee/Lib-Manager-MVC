@@ -30,6 +30,8 @@
                 <td><input type="text" name="bookID" value="{{book.isbn}}" style="display:none;"></td>
             </form>
         </tr>
+        {% endfor %}
+      {% endif %}
     </table>
     <br />
     <button class="logout-btn" onclick="window.location='/logout';">

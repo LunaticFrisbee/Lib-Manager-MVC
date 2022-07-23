@@ -1,6 +1,6 @@
 <?php
 
-namespace COntroller;
+namespace Controller;
 
 session_start();
 
@@ -17,11 +17,11 @@ class AdminLogin
         $password = $_POST["password"];
         $res= \Model\Auth::get_admin_credentials($username);
         if($res){
-            $saltedPassword = $password.$res[0]["salt"];
+            $saltedPassword = $password.$res["salt"];
             $hashedPassword = hash('sha256',$saltedPassword);
-            if($hashedPassword == $response[0]["password"]){
+            if($hashedPassword == $res["password"]){
                 $_SESSION['admin'] = 'true';
-                $_SESSION['id'] = $response[0]["username"];
+                $_SESSION['id'] = $res["username"];
                 header("Location: /admindashboard");
             }
             else{

@@ -18,9 +18,9 @@ class Login
         $password = $_POST["password"];
         $res = \Model\Auth::get_user_credentials($enrollmentNo);
         if($res){
-            $saltedPassword = $password.$res[0]["salt"];
+            $saltedPassword = $password.$res["salt"];
             $hashedPassword = hash('sha256',$saltedPassword);
-            if($hashedPassword == $res[0]["password"]){
+            if($hashedPassword == $res["password"]){
                 $_SESSION['admin'] = 'false';
                 $_SESSION['user'] = $enrollmentNo;
                 header("Location: /dashboard");

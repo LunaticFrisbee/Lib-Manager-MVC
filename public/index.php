@@ -6,7 +6,7 @@ Toro::serve(array(
     "/" => "\Controller\Login",
     "/register" => "\Controller\Register",
     "/admin" => "\Controller\AdminLogin",
-    "/dashboard" => "\Controller\UserDashbaord",
+    "/dashboard" => "\Controller\UserDashboard",
     "/dashboard/checkoutlist" => "\Controller\CheckoutList",
     "/dashboard/checkoutreq" => "\Controller\CheckoutReq",
     "/dashboard/return" => "\Controller\HandIn",
