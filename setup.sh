@@ -28,18 +28,22 @@ else
     echo '$DB_PASSWORD = "'$DB_PASSWORD'";' >> config/config.php
 
     mysql -u $DB_USERNAME -p$DB_PASSWORD -e "CREATE DATABASE $DB_NAME;"
-    if [$? -eq 0];
+    if [ $? -eq 0 ];
     then
         mysql -u $DB_USERNAME -p$DB_PASSWORD $DB_NAME < schema/schema.sql
-        if [$? -eq 0];
+        if [ $? -eq 0 ];
         then
+        composer install
+        composer dump-autoload
             cd public
             echo "Starting the development server at port 5000"
             php -S localhost:5000
         else
             echo "Error encountered while importing from the SQLdump"
+            rm config/config.php
         fi
     else
         echo "Error encountered while connecting to the mySQL server"
+        rm config/config.php
     fi
 fi
