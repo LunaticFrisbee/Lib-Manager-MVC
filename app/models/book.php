@@ -18,8 +18,8 @@ class BookUtils
 
     public static function insert_book_data($title,$quantity,$isbn,$status){
         $db = \DB::get_instance();
-        $stmt -> prepare("INSERT INTO books (title, quantity, isbn, status) VALUES (?,?,?,?)");
-        $stmt -> execute([$title,$quantiy,$isbn,$status]);
+        $stmt = $db -> prepare("INSERT INTO books (title, quantity, isbn, status) VALUES (?,?,?,?)");
+        $stmt -> execute([$title,$quantity,$isbn,$status]);
     }
 
     public static function update_book_data($quantity,$isbn){
@@ -38,7 +38,7 @@ class BookUtils
 
     public static function insert_request_data($enrollmentNo,$bookName,$status,$isbn){
         $db = \DB::get_instance();
-        $stmt -> prepare("INSERT INTO request (enrollmentNo, book, status, isbn) VALUES (?,?,?,?)");
+        $stmt = $db -> prepare("INSERT INTO request (enrollmentNo, book, status, isbn) VALUES (?,?,?,?)");
         $stmt -> execute([$enrollmentNo,$bookName,$status,$isbn]);
     }
 
@@ -54,7 +54,7 @@ class BookUtils
         $db = \DB::get_instance();
         $stmt = $db -> prepare("SELECT book,isbn FROM request WHERE enrollmentNo = ? AND status = 1");
         $stmt -> execute([$enrollmentNo]);
-        $res = $stmt -> fetch();
+        $res = $stmt -> fetchAll();
         return $res;
     }
 

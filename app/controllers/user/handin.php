@@ -13,8 +13,13 @@ class HandIn
         if($res != NULL){
             $updatedQuantity = $res["quantity"] + 1;
             \Books\BookUtils::update_book_data($updatedQuantity,$bookID);
-            \Books\BookUtils::delete_request($isbn,$_SESSION["user"]);
+            \Books\BookUtils::delete_request($bookID,$_SESSION["user"]);
             header("Location: /dashboard/checkoutlist");
+        }
+        else {
+            echo \View\Loader::make()->render("templates/error.twig",array(
+                "error" => 'Hag rha hai',
+            ));
         }
     }
 }

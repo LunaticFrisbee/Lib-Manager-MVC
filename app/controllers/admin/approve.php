@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-sesison_start();
+session_start();
 
 class Approve
 {
@@ -16,8 +16,8 @@ class Approve
             \Books\BookUtils::approve_request($bookID,$enrollmentNo);
             $res2 = \Books\BookUtils::get_book_data($bookID);
             if($res2 != NULL){
-                $updatedQuantity = $res2[0]["quantity"] - 1;
-                \Books\BookUtils::update_book_data($updatedQuantity,$isbn);
+                $updatedQuantity = $res2["quantity"] - 1;
+                \Books\BookUtils::update_book_data($updatedQuantity,$bookID);
                 header("Location: /admindashboard/requests");
             }
         }

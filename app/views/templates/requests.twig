@@ -36,13 +36,15 @@
                                 <input type="text" name="bookID" value="{{request.isbn}}" style="display: none;"/>
                                 <input type="text" name="bookTitle" value="{{request.book}}" style="display: none;"/>
                                 <input type="text" name="enrollmentNo" value="{{request.enrollmentNo}}" style="display: none;"/>
-                                <input type="submit" value="Approve" />
+                                <input type="submit" value="Deny" />
                         </form>
                     </td>
                   </tr>
                 {% endfor %}
               {% endif %}
       </table>
+      <br>
+      <button onclick="window.location='/admindashboard'">Go Back to Dashboard</button>
     </div>
   </body>
 </html>

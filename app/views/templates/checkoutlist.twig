@@ -20,10 +20,12 @@
                     <tr>
                         <td>{{request.isbn}}</td>
                         <td>{{request.book}}</td>
-                        <td><form action="/dashboard/return" method="POST">
-                            <input type="text" name="{{request.isbn}}" style="display:none">
+                        <td>
+                            <form action="/dashboard/return" method="POST">
+                            <input type="text" name="bookID" value="{{request.isbn}}" style="display:none">
                             <input type="submit" value="HandIn" >
-                        </form></td>
+                            </form>
+                        </td>
                     </tr>
                 {% endfor %}
             {% endif %}

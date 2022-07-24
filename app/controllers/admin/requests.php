@@ -10,7 +10,7 @@ class Requests
     {
         if($_SESSION["admin"] == 'true'){
             echo \View\Loader::make()->render("templates/requests.twig",array(
-                "bookData" => \Books\Bookutils::view_all_requests(),
+                "bookData" => \Books\BookUtils::view_all_requests(),
             ));
         }
         else {
