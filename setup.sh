@@ -33,7 +33,6 @@ else
         mysql -u $DB_USERNAME -p$DB_PASSWORD $DB_NAME < schema/schema.mySQL
         if [$? -eq 0];
         then
-            cd ..
             cd public
             echo "Starting the development server at port 5000"
             php -S localhost:5000
