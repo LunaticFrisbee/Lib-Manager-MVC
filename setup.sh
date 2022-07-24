@@ -40,7 +40,7 @@ else
         else
             echo "Error encountered while importing from the SQLdump"
         fi
-    then
+    else
         echo "Error encountered while connecting to the mySQL server"
     fi
 fi
