@@ -30,7 +30,7 @@ else
     mysql -u $DB_USERNAME -p$DB_PASSWORD -e "CREATE DATABASE $DB_NAME;"
     if [$? -eq 0];
     then
-        mysql -u $DB_USERNAME -p$DB_PASSWORD $DB_NAME < schema/schema.mySQL
+        mysql -u $DB_USERNAME -p$DB_PASSWORD $DB_NAME < schema/schema.sql
         if [$? -eq 0];
         then
             cd public
