@@ -4,38 +4,44 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/styles/styles.css">
     <title>Remove Books</title>
   </head>
   <body>
-    <button onclick="window.location='/admindashboard';">Back</button>
-    <br><br>
-    <table>
-      <tr>
-        <th style="padding: 4px">ISBN</th>
-        <th style="padding: 4px">Book Name</th>
-        <th style="padding: 4px">Copies Available</th>
-        <th style="padding: 4px">Quantity to Remove</th>
-        <th style="padding: 4px"></th>
-        <th></th>
-      </tr>
-      {% if bookData != NULL %}
-        {% for book in bookData %}
-        <tr>
-            <td>{{book.isbn}}</td>
-            <td>{{book.title}}</td>
-            <td>{{book.quantity}}</td>
-            <form action="/admindashboard/removebooks" method="POST">
-                <td><input type="number" name="quantity" placeholder="Quantity" /></td>
-                <td><input type="submit" value="Remove" /></td>
-                <td><input type="text" name="bookID" value="{{book.isbn}}" style="display:none;"></td>
-            </form>
-        </tr>
-        {% endfor %}
-      {% endif %}
-    </table>
-    <br />
-    <button class="logout-btn" onclick="window.location='/logout';">
-      Logout
-    </button>
+    <div class="complete-wrapper">
+      <div class="container text-center">
+        <button class="btn btn-warning" id="top-btn" onclick="window.location='/admindashboard';">Back to Dashboard</button>
+        <br><br>
+        <table class="table table-striped">
+          <tr>
+            <th>ISBN</th>
+            <th>Book Name</th>
+            <th>Copies Available</th>
+            <th>Quantity to Remove</th>
+            <th></th>
+            <th></th>
+          </tr>
+          {% if bookData != NULL %}
+            {% for book in bookData %}
+            <tr>
+                <td>{{book.isbn}}</td>
+                <td>{{book.title}}</td>
+                <td>{{book.quantity}}</td>
+                <form action="/admindashboard/removebooks" method="POST">
+                    <td><input type="number" name="quantity" placeholder="Quantity" /></td>
+                    <td><button class="btn btn-outline-danger" type="submit">Remove</button></td>
+                    <td><input type="text" name="bookID" value="{{book.isbn}}" style="display:none;"></td>
+                </form>
+            </tr>
+            {% endfor %}
+          {% endif %}
+        </table>
+        <button class="btn btn-primary" onclick="window.location='/logout';">
+          Logout
+        </button>
+      </div>
+    </div>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </html>   
