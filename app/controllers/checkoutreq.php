@@ -12,12 +12,23 @@ class CheckoutReq
             $bookID = $_POST["bookID"];
             $res = \Books\BookUtils::get_book_data($bookID);
             if($res){
-                \Books\BookUtils::insert_request_data($_SESSION["user"],$res["title"],0,$bookID);
-                header("Location: /dashboard");
+                $res1 = \Books\BookUtils::check_request_data($_SESSION["user"],$bookID);
+                if($res1 != NULL){
+                    echo \View\Loader::make()->render("templates/message.twig",array(
+                        "error" => 'Book request has already been made',
+                    ));
+                }
+                else{
+                    \Books\BookUtils::insert_request_data($_SESSION["user"],$res["title"],0,$bookID);
+                echo \View\Loader::make()->render("templates/message.twig",array(
+                    "checkoutSuccess" => 'true',
+                    "bookID" => $bookID,
+                ));
+                }
             } 
             else{
-                echo \View\Loader::make()->render("templates/error.twig",array(
-                    "error" => "This book is not available right now",
+                echo \View\Loader::make()->render("templates/message.twig",array(
+                    "error" => 'This book is not available right now',
                 ));
             }
         }

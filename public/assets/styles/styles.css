@@ -36,3 +36,11 @@ body{
 #top-btn{
     margin-top: 0.625rem;
 }
+
+.error{
+    color: red;
+}
+
+.success{
+    color: rgb(42, 230, 42);
+}

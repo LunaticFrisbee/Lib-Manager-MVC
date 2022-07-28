@@ -25,10 +25,15 @@ class Login
                 $_SESSION['user'] = $enrollmentNo;
                 header("Location: /dashboard");
             }
+            else{
+                echo \View\Loader::make()->render("templates/message.twig",array(
+                    "error" => 'Entered password is incorrect',
+                ));
+            }
         }
         else{
-            echo \View\Loader::make()->render("templates/error.twig",array(
-                "error" => 'Entered password does not match',
+            echo \View\Loader::make()->render("templates/message.twig",array(
+                "error" => 'User corresponding to enrollment No. is not a registered user',
             ));
         }
 

@@ -25,7 +25,7 @@ class Register
             header("Location: /");
         } 
         else{
-            echo \View\Loader::make()->render("templates/error.twig",array(
+            echo \View\Loader::make()->render("templates/message.twig",array(
                 "error" => 'Entered passwords do not match',
             ));
         }

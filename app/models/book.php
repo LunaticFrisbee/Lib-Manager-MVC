@@ -36,6 +36,14 @@ class BookUtils
         return $res;
     }
 
+    public static function check_request_data($enrollmentNo,$isbn){
+        $db = \DB::get_instance();
+        $stmt = $db -> prepare("SELECT book FROM request WHERE enrollmentNo = ? AND isbn = ? AND status = 0");
+        $stmt -> execute([$enrollmentNo,$isbn]);
+        $res = $stmt -> fetchAll();
+        return $res;
+    }
+
     public static function insert_request_data($enrollmentNo,$bookName,$status,$isbn){
         $db = \DB::get_instance();
         $stmt = $db -> prepare("INSERT INTO request (enrollmentNo, book, status, isbn) VALUES (?,?,?,?)");
@@ -48,6 +56,14 @@ class BookUtils
         $stmt -> execute();
         $res = $stmt -> fetchAll();
         return $res;
+    }
+
+    public static function view_pending_requests($enrollmentNo){
+        $db = \DB::get_instance();
+        $stmt = $db -> prepare("SELECT book,isbn FROM request WHERE enrollmentNo = ? AND status = 0");
+        $stmt -> execute([$enrollmentNo]);
+        $res = $stmt -> fetchAll();
+        return $res; 
     }
 
     public static function get_user_requests($enrollmentNo){

@@ -25,7 +25,7 @@ class AdminLogin
                 header("Location: /admindashboard");
             }
             else{
-                echo \View\Loader::make()->render("templates/error.twig",array(
+                echo \View\Loader::make()->render("templates/message.twig",array(
                     "error" => 'Wrong password entered',
                 ));
             }

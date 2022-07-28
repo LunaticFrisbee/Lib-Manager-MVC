@@ -17,7 +17,7 @@ class HandIn
             header("Location: /dashboard/checkoutlist");
         }
         else {
-            echo \View\Loader::make()->render("templates/error.twig",array(
+            echo \View\Loader::make()->render("templates/message.twig",array(
                 "error" => 'Hag rha hai',
             ));
         }
