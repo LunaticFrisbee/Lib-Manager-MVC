@@ -14,11 +14,15 @@ class HandIn
             $updatedQuantity = $res["quantity"] + 1;
             \Books\BookUtils::update_book_data($updatedQuantity,$bookID);
             \Books\BookUtils::delete_request($bookID,$_SESSION["user"]);
-            header("Location: /dashboard/checkoutlist");
+            echo \View\Loader::make()->render("templates/message.twig",array(
+                "message" => 'Book successfully handed over to the Library',
+                "redirectURL" => '/dashboard/checkoutlist',
+                "buttonValue" => 'Go Back to CheckoutList',
+            ));
         }
         else {
             echo \View\Loader::make()->render("templates/message.twig",array(
-                "error" => 'Hag rha hai',
+                "error" => 'Book doesnt exist',
             ));
         }
     }

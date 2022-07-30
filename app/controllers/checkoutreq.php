@@ -21,8 +21,9 @@ class CheckoutReq
                 else{
                     \Books\BookUtils::insert_request_data($_SESSION["user"],$res["title"],0,$bookID);
                 echo \View\Loader::make()->render("templates/message.twig",array(
-                    "checkoutSuccess" => 'true',
-                    "bookID" => $bookID,
+                    "message" => 'Checkout query successfully generated',
+                    "redirectURL" => '/dashboard',
+                    "buttonValue" => 'Go Back to Dashboard'
                 ));
                 }
             } 

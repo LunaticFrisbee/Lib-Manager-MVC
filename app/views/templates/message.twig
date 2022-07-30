@@ -15,9 +15,9 @@
                     <h4 class="error">{{error}}</h4>
                     <button class="btn btn-outline-warning" onclick="javascript:history.go(-1)">Go Back</button>
                 {% endif %}
-                {% if checkoutSuccess == 'true' %}
-                <h4 class="success">Checkout query for bookISBN={{bookID}} successfully sent to admin </h4>
-                <button class="btn btn-warning" onclick="window.location='/dashboard'">Go to Dashboard</button>
+                {% if message!= NULL %}
+                <h4 class="success">{{message}}</h4>
+                <button class="btn btn-warning" onclick="window.location=`{{redirectURL}}`">{{buttonValue}}</button>
                 {% endif %}
             </div>
         </div>    

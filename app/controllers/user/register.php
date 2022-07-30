@@ -14,9 +14,9 @@ class Register
     public function post()
     {
         $username = $_POST["username"];
-        $enrollmentNo = $_POST["enroll"];
+        $enrollmentNo = $_POST["enrollmentNo"];
         $password = $_POST["password"];
-        $passwordConfirm = $_POST["passwordC"];
+        $passwordConfirm = $_POST["confirmPassword"];
         if($password == $passwordConfirm){
             $salt = bin2hex(random_bytes(4));
             $saltedPassword = $password.$salt;

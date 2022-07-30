@@ -23,11 +23,19 @@ class AddBooks
             if($res != NULL){
                 $updatedQuantity = $quantity + $res["quantity"];
                 \Books\BookUtils::update_book_data($updatedQuantity,$isbn);
-                header("Location: /admindashboard");
+                echo \View\Loader::make()->render("templates/message.twig",array(
+                    "message" => 'Book quantity successfully updated',
+                    "redirectURL" => '/admindashboard',
+                    "buttonValue" => 'Go Back to Dashboard'
+                ));
             }
             else {
                 \Books\BookUtils::insert_book_data($bookTitle,$quantity,$isbn,0);
-                header("Location: /admindashboard");
+                echo \View\Loader::make()->render("templates/message.twig",array(
+                    "message" => 'Book successfully added',
+                    "redirectURL" => '/admindashboard',
+                    "buttonValue" => 'Go Back to Dashboard'
+                ));
             }
         }
         else{

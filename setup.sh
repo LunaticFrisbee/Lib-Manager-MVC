@@ -27,10 +27,10 @@ else
     echo '$DB_USERNAME = "'$DB_USERNAME'";' >> config/config.php
     echo '$DB_PASSWORD = "'$DB_PASSWORD'";' >> config/config.php
 
-    mysql -u $DB_USERNAME -p$DB_PASSWORD -e "CREATE DATABASE $DB_NAME;"
+    MYSQL_PWD=$DB_PASSWORD mysql -u $DB_USERNAME -e "CREATE DATABASE $DB_NAME;"
     if [ $? -eq 0 ];
     then
-        mysql -u $DB_USERNAME -p$DB_PASSWORD $DB_NAME < schema/schema.sql
+        MYSQL_PWD=$DB_PASSWORD mysql -u $DB_USERNAME $DB_NAME < schema/schema.sql
         if [ $? -eq 0 ];
         then
         composer install
