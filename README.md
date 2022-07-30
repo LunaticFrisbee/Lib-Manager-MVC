@@ -27,6 +27,22 @@ $ php -S localhost:PORT
 ``` 
 where PORT is the port number you want to use.
 
+## VHost
+* Make a new file in `/etc/apache2/sites-available` by the name of `{Domain Name}.com.conf`.
+* Then paste the contents of the given `/config/sample.vhost.conf` to the file you ust created.
+* Run the following command
+```
+$ sudo nano /etc/hosts/
+```
+You will need to add `127.0.0.1 {Domain Name}` to this file.
+* Run the following commands now:-
+```Bash
+$ sudo a2ensite {Domain Name}.conf
+$ sudo a2dissite 000-default.conf
+$ sudo systemctl restart apache2
+```
+Your server should be up and running now.
+
 ## Usage
 This app is split on the usage for two kinds of users, default users(referred to as 'User' from now on) and users with admin priviliges(referres to as 'Admin' henceforth)
 1. User
