@@ -44,7 +44,7 @@ $ sudo systemctl restart apache2
 Your server should be up and running now.
 
 ## Usage
-This app is split on the usage for two kinds of users, default users(referred to as 'User' from now on) and users with admin priviliges(referres to as 'Admin' henceforth)
+This app is split on the usage for two kinds of users, default users(referred to as 'User' from now on) and users with admin privileges(referred to as 'Admin' henceforth)
 1. User
     - You will land at the default login page for user. Existing users sign in and new users can register themselves and then login in to land to the User Dashboard.
     - At the dashboard, you will find
